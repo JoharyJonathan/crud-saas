@@ -1,0 +1,25 @@
+extends layout
+
+block content 
+  h1 New User 
+
+  form(action="/users/create" method="POST")
+    div 
+      label(for="name") Name 
+      input(type="text" id="name" name="name" placeholder="Enter a name")
+
+    div 
+      label(for="firstname") Firstname 
+      input(type="text" id="firstname" name="firstname" placeholder="Enter a firstname")
+
+    div 
+      label(for="password") Password 
+      input(type="password" id="password" name="password" placeholder="Enter a password") 
+
+    div 
+      label(for="role_id") Role 
+      select(name="role_id" id="role_id") 
+        each val in roles 
+          option(value=val.id selected=(user.role_id == val.id))= val.name
+
+    button(type="submit") Create  

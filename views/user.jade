@@ -1,0 +1,9 @@
+extends layout 
+
+block content
+  h1 User info #{user.id}
+  p user detail
+  p Name : #{user.name} 
+  p Firstname : #{user.firstname} 
+  p Role : #{user.role_name}
+  a(href=`/users/edit/${user.id}`) update 

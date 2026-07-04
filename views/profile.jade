@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+    h1 Your Profile 
+    p name : #{name}
+    p firstname : #{firstname}
+    p role : #{role}
+
+    a(href='/auth/logout') Log Out 

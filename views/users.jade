@@ -1,0 +1,36 @@
+extends layout 
+
+block content
+  h1 Users List
+  p List of users
+  a(href="/users/new") New User
+  
+  table
+    thead
+      tr
+        th id
+        th name
+        th firstname
+        th role
+        th actions
+
+    tbody
+      each val in users
+        tr
+          td= val.id
+          td= val.name
+          td= val.firstname
+          td= val.role_name
+          td 
+            a(href=`/users/${val.id}`) view 
+            a(href=`/users/edit/${val.id}`) edit 
+            button(type='button', onClick=`deleteUser(${val.id})`) delete
+
+            script. 
+              async function deleteUser(id) {
+                await fetch('/users/delete/' + id, {
+                  method: 'DELETE'
+                });
+
+                window.location.reload();
+              }

@@ -1,0 +1,14 @@
+nav.navbar 
+    a(href="/") Home 
+
+    ul.menu 
+        li: a(href="/users") Users list 
+        li: a(href="/roles") Roles list 
+        li: a(href="/products") Product List
+
+        if !user 
+            li: a(href="/auth/signup") Register 
+            li: a(href="/auth/signin") Log In 
+
+        if user
+            li: a(href="/auth/profile") My Profile

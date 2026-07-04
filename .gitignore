@@ -1,0 +1,8 @@
+# node_modules
+node_modules/
+
+# Environnement variables
+.env
+
+# Images du projet
+public/images

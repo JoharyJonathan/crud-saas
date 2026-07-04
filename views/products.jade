@@ -1,0 +1,45 @@
+extends layout 
+
+block content 
+    h1 Product List 
+    p List of products
+    a(href='/products/new') New Product
+
+    table 
+        thead 
+            tr 
+                th id 
+                th name 
+                th description 
+                th stock 
+                th price 
+                th image 
+                th created_at 
+                th updated_at
+                th actions
+
+        tbody 
+            each prod in products 
+                tr 
+                    td= prod.id 
+                    td= prod.name 
+                    td= prod.description 
+                    td= prod.stock 
+                    td= prod.price 
+                    td
+                        img(src="/images/products/" + prod.image, alt=prod.name, width="50px", height="50px")
+                    td= prod.created_at 
+                    td= prod.updated_at
+                    td 
+                        a(href=`/products/${prod.id}`) View 
+                        a(href=`/products/edit/${prod.id}`) Edit
+                        button(type='button', onClick=`deleteProduct(${prod.id})`) Delete
+
+                        script. 
+                            async function deleteProduct(id) {
+                                await fetch ('/products/delete/' + id, {
+                                    method: 'DELETE'
+                                });
+
+                                window.location.reload();
+                            }

@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+    h1 Sign In Form
+
+    form(action="/auth/login" method="POST")
+        div 
+            label(for="name") Name 
+            input(type="text" id="name" name="name" placeholder="your name...")
+
+        div 
+            label(for="password") Password 
+            input(type="password" id="password" name="password")
+
+        button(type="submit") Sign In 
+
+        p Don't have account ? Register 
+        a(href='/auth/signup') Register

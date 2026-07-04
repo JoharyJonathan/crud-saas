@@ -1,0 +1,7 @@
+extends layout 
+
+block content 
+    h1 View Role #{id}
+    p Name :  #{role.name}
+    p Description : #{role.description} 
+    a(href=`/roles/edit/${role.id}`) Update 

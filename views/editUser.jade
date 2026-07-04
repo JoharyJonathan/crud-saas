@@ -1,0 +1,26 @@
+extends layout 
+
+block content 
+  h1 Edit User #{user.id}
+
+  form(action='/users/put/' + user.id + '?_method=PUT', method="POST")
+    div
+      label(for="name") Name 
+      input(type="text" id="name" name="name" value=user.name)
+
+    div 
+      label(for="firstname") FirstName 
+      input(type="text" id="firstname" name="firstname" value=user.firstname) 
+
+    div 
+      label(for="password") Password 
+      input(type="password" id="password" name="password") 
+
+    div
+    label(for="role_id") Role
+    select(name="role_id" id="role_id")
+      each val in roles
+        option(value=val.id selected=(user.role_id == val.id))
+          = val.name
+    
+    button(type="submit") Update

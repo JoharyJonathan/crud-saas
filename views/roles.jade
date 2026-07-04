@@ -1,0 +1,38 @@
+extends layout 
+
+block content 
+    h1 Roles List 
+    p List of roles
+    a(href="/roles/new") New Role 
+
+    table 
+        thead 
+            tr 
+                th id 
+                th name 
+                th description 
+                th created_at 
+                th updated_at 
+                th actions 
+        
+        tbody 
+            each role in roles
+                tr 
+                    td= role.id 
+                    td= role.name 
+                    td= role.description 
+                    td= role.created_at 
+                    td= role.updated_at 
+                    td 
+                        a(href=`/roles/${role.id}`) view 
+                        a(href=`/roles/edit/${role.id}`) edit 
+                        button(type='submit', onClick=`deleteRole(${role.id})`) delete  
+
+                        script. 
+                            async function deleteRole(id) {
+                                await fetch('/roles/delete/' + id, {
+                                    method: 'DELETE'
+                                });
+
+                                window.location.reload();
+                            }

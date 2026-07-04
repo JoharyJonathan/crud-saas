@@ -1,0 +1,30 @@
+extend layout 
+
+block content 
+    h1 Edit Product #{product.id}
+
+    form(action='/products/put-image/' + product.id, enctype="multipart/form-data", method="POST")
+        div 
+            label(for="image") Image 
+            input(type="file" id="image" name="image" value=product.image)
+
+        button(type="submit") Update image only  
+
+    form(action='/products/put/' + product.id + '?_method=PUT', method="POST")
+        div 
+            label(for="name") Name
+            input(type="text" id="name" name="name" value=product.name) 
+
+        div 
+            label(for="description") Description 
+            textarea(type="text" id="description" name="description")= product.description
+
+        div 
+            label(for="stock") Stock 
+            input(type="number" id="stock" name="stock" value=product.stock)
+
+        div 
+            label(for="price") Price 
+            input(type="number" step="0.01" id="price" name="price" value=product.price)
+
+        button(type="submit") Update

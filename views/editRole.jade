@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+    h1 Edit Role #{role.id}
+
+    form(action='/roles/put/' + role.id + '?_method=PUT', method="POST")
+        div 
+            label(for="name") Name 
+            input(type="text" id="name" name="name" value=role.name)
+
+        div 
+            label(for="description") Description 
+            textarea(type="text" id="description" name="description")= role.description 
+
+        button(type='submit') Update 

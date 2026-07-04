@@ -1,0 +1,11 @@
+extend layout 
+
+block content 
+    h1 Product info #{product.id}
+    img(src="/images/products/" + product.image, alt=product.name, width="250px", height="200px")
+    p product detail 
+    p Name : #{product.name}
+    p Description : #{product.description} 
+    p Available Stock : #{product.stock}
+    p Unit Price : #{product.price}
+    a(href=`/products/edit/${product.id}`) Update 
